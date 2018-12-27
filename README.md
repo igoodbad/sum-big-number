@@ -6,7 +6,6 @@ Function to sum big numbers, numbers send in string and return string
 ```sh
 git clone https://github.com/igoodbad/sum-big-number.git
 cd sum-big-number/
-node sumas.js
 ```
 
 ## Usage
