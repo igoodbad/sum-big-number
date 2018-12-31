@@ -12,7 +12,7 @@ function sumTo(n1, n2) {
         bNegative = "-";
         b.splice(0, 1);
     }
-    let countTo = 1;
+    let countTo = 0;
     let next = false;
 
     const lngA = a.length;
@@ -27,7 +27,10 @@ function sumTo(n1, n2) {
             a.unshift("0");
         }
         countTo = lngB;
+    } else {
+        countTo = lngA;
     }
+
     for (let i = (countTo - 1); i >= 0; i--) {
         let sub = (Number(aNegative + a[i]) + Number(bNegative + b[i])) + (next ? 1 : 0);
         let clean = Number((sub + "").replace("-", ""));
@@ -35,8 +38,10 @@ function sumTo(n1, n2) {
             c = (clean - 10) + "" + c;
             next = true;
         } else {
-            c = clean + "" + c;
-            next = false;
+            if (sub === 0 && i === 0) {
+                c = clean + "" + c;
+                next = false;
+            }
         }
     }
     if (aNegative === "-" && ((n1.length - 1) > n2.length) ||
